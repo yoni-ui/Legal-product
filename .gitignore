@@ -9,6 +9,7 @@ venv/
 env/
 
 # Build / cache
+*.tsbuildinfo
 .next/
 out/
 dist/

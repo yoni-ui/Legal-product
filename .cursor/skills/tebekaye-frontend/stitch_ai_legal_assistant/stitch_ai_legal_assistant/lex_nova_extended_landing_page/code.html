@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lex Nova | AI Lawyer &amp; Personal Legal Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#b7c4ff",
+                    "background": "#111317",
+                    "tertiary-fixed": "#e4e2e6",
+                    "on-tertiary": "#303033",
+                    "on-primary-fixed": "#001a42",
+                    "tertiary-fixed-dim": "#c8c6ca",
+                    "tertiary": "#c8c6ca",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "on-primary-container": "#00285d",
+                    "primary": "#adc6ff",
+                    "on-primary-fixed-variant": "#004395",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-container-highest": "#333539",
+                    "on-tertiary-fixed-variant": "#46464a",
+                    "outline-variant": "#424754",
+                    "surface-container-lowest": "#0c0e12",
+                    "secondary": "#b7c4ff",
+                    "surface-variant": "#333539",
+                    "inverse-on-surface": "#2f3035",
+                    "inverse-primary": "#005ac2",
+                    "surface-bright": "#37393e",
+                    "on-surface": "#e2e2e8",
+                    "on-secondary-container": "#c0cbff",
+                    "surface": "#111317",
+                    "surface-container": "#1e2024",
+                    "primary-container": "#4d8eff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed": "#001552",
+                    "surface-tint": "#adc6ff",
+                    "tertiary-container": "#919094",
+                    "secondary-fixed": "#dce1ff",
+                    "on-primary": "#002e6a",
+                    "surface-dim": "#111317",
+                    "on-secondary": "#002682",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#1a1c20",
+                    "surface-container-high": "#282a2e",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e2e2e8",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#0039b5",
+                    "on-background": "#e2e2e8",
+                    "secondary-container": "#0146db",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#29292d",
+                    "outline": "#8c909f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #111317; font-family: 'Inter', sans-serif; color: #e2e2e8; overflow-x: hidden; }
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(51, 53, 57, 0.4);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(77, 142, 255, 0.1) 0%, rgba(17, 19, 23, 0) 70%);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4d8eff 100%);
+        }
+        .trust-logo {
+            filter: grayscale(1) brightness(2) contrast(0.5);
+            transition: all 0.3s ease;
+        }
+        .trust-logo:hover {
+            filter: grayscale(0) brightness(1) contrast(1);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-white">
+<nav class="fixed top-0 w-full z-50 bg-[#111317]/80 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-outline-variant/10">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
+<div class="text-xl font-bold tracking-tighter text-[#adc6ff] font-manrope">Lex Nova</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-[#adc6ff] font-semibold border-b-2 border-[#adc6ff] pb-1 font-manrope tracking-tight" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-[#adc6ff] transition-colors font-manrope tracking-tight" href="#audiences">Who is it for?</a>
+<a class="text-on-surface-variant hover:text-[#adc6ff] transition-colors font-manrope tracking-tight" href="#use-cases">Use Cases</a>
+<a class="text-on-surface-variant hover:text-[#adc6ff] transition-colors font-manrope tracking-tight" href="#pricing">Pricing</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-on-surface-variant hover:text-[#adc6ff] transition-colors font-manrope tracking-tight font-medium">Login</button>
+<button class="cta-gradient px-6 py-2.5 rounded-xl text-on-primary font-bold active:scale-95 transition-all hover:shadow-lg hover:shadow-primary/20">Try for Free</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden">
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+<div class="space-y-8">
+<div class="inline-flex items-center space-x-2 bg-surface-container-high px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-semibold tracking-widest uppercase text-on-surface-variant">The Personal Legal AI Assistant</span>
+</div>
+<h1 class="text-6xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tighter text-on-surface">
+                    Your Personal <br/><span class="text-primary">AI Lawyer</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                    Say goodbye to expensive legal consultations and complicated legalese. Get instant, reliable legal advice, document drafting, and analysis in seconds.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="cta-gradient px-8 py-4 rounded-xl text-on-primary font-bold text-lg active:scale-95 transition-all shadow-xl shadow-primary/10">Get Started Free</button>
+<button class="bg-surface-container-high border border-outline-variant/30 px-8 py-4 rounded-xl text-on-surface font-semibold text-lg active:scale-95 transition-all hover:bg-surface-bright flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span> Watch Demo
+                    </button>
+</div>
+<!-- Trust Signals (Key Addition 2) -->
+<div class="pt-8 space-y-4">
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface-variant/60">Trusted by innovators at</p>
+<div class="flex flex-wrap gap-8 items-center opacity-60">
+<img alt="NVIDIA Inception" class="h-6 trust-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ZcOMAN3khcuh1FOv8044O58KsS9-WER2O4MilT0A3FQVucg-ds5TJizhxXsiz2rhq8IWUBxKRpNspR7Votx9cFbCOqkuDADvAK6zJCkVb4zZonkiLu8cwj4-iAlnMF1W60Q89GVKbXRkuV6-Pqy9mZQpmQYjOIlBCapYjf9B7xaS93cjLWlja_JOOZp7q_gGvuCSp3hBM3sR23wVAl6adhli_qa0MQm7L6iYjVSHiaVw6_Vw0l4edb3ALP8vpO919qaPZOnBcA"/>
+<img alt="Google for Startups" class="h-6 trust-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLq_2pxhRCBXD3wX-KrwAcIqg-CTQpzHZ2fPa2Q67uS9aN5nqGslOS6yAVmF2HC5PzCnz4sV91NMWsssnqivNvsPCYdlr31HlSkSR28l6TwIxhg1uG9hSXo3A0oLce8NnVM_0GbUeuNLUuQnDwdLtr0hqHFd5hhFhx1RevaIiwCX_rGQ_3im1Eyw-__xIoumOAPVne-tk8o6ud1rk4SExC9j6FZA_ArIs4E-oZJrfq0wuGHk3nF4oDEbXXFmHaXl0bV7hRF4QbqA"/>
+<img alt="Product Hunt" class="h-6 trust-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-UH2OGzbwL7q7TacE_uxHgQ8SG6zvT8XCqOUzVoReHhbLfMBg7GjhIjhGW0romAS6aB3AFGX3MXU4KQgKjiypDkSS7MLygYbZok30h6MC8j24PjR6uaKmGcsi2PLApM7PD8jsRoHfwFCIIDjX3PVW1fUp-FduaZjyE5gpRgl-vJvqpn_51XrT5SSSMX1OCgZtGtly7PbLiOKQm4buBqRGxGi8tqeKANACMJabP2sJzOze74CL8ZuPrj7e4H0VyCY307tUDiimdw"/>
+</div>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-black/60 border border-outline-variant/20 relative group">
+<img alt="Modern Workspace" class="w-full h-full object-cover grayscale opacity-60 transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-8_Q_NJKv3qvPgmNCk4sVx9GAwilfP5p16Jy1hJGP-KW_xo3bNEdRL8rcbsfJeoBFcTRcP_-pnBEkBds4XYfhYkxssaPogf9-GPp_v0EMmDCa_rVR-fi3YkB0rU-sk9vFQyQVcx-jZjR83jxdAU6t7LTAS6Iu6MZPiTNiuCnwyJCvLHVxTo42mj4BNFjBL-voUO2kK54E0g2Sofvg9x4Omq5W7gtm4Oa3XZusfeBKsvgRZeeVHnXhH8pP8nISbbUNWzgsuxz0VA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-8 -left-8 glass-panel p-6 rounded-2xl border border-outline-variant/30 w-72 shadow-2xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-sm font-bold text-on-surface">99.9% Accuracy Rate</span>
+</div>
+<div class="space-y-2">
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[99%]"></div>
+</div>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Document Processed in 4.2s</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics Section (Key Addition 5) -->
+<section class="py-20 bg-surface-container-lowest border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="space-y-2">
+<div class="text-5xl font-black font-headline text-primary">75%</div>
+<p class="text-on-surface-variant font-medium">Average time saved on legal research</p>
+</div>
+<div class="space-y-2">
+<div class="text-5xl font-black font-headline text-primary">90%</div>
+<p class="text-on-surface-variant font-medium">Reduction in document preparation costs</p>
+</div>
+<div class="space-y-2">
+<div class="text-5xl font-black font-headline text-primary">5s</div>
+<p class="text-on-surface-variant font-medium">To summarize complex 50-page agreements</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section (Key Addition 3) -->
+<section class="py-32 bg-surface-container-low relative" id="features">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h2 class="text-4xl font-bold font-headline mb-4 tracking-tight">Comprehensive Legal Tech Stack</h2>
+<p class="text-on-surface-variant">Lex Nova combines web-scale intelligence with advanced document processing to put a complete law firm in your pocket.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Internet-Powered Research</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Access real-time global case law, statutes, and legal news. Our AI scans the live web for the most current legal precedents.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">AI Document Handling</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Instant OCR for physical docs, semantic summarization of long contracts, and professional translation across 50+ languages.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Multi-Platform Availability</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Access your legal workspace anywhere. Seamless sync across Web, iOS, and Android with full feature parity.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Intelligent Drafting</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Generate ironclad NDAs, service agreements, and employment contracts in seconds by simply describing your needs.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">Compliance Shield</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Automatic risk assessment for every document. We flag unfavorable clauses and suggest compliant alternatives instantly.</p>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/10 hover:bg-surface-container-high transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</div>
+<h3 class="text-xl font-bold font-headline mb-3">24/7 Legal Consultation</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Ask any legal question, any time. Get conversational answers based on verified legal databases, not just generic LLM outputs.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Target Audiences Section (Key Addition 4) -->
+<section class="py-32" id="audiences">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="text-4xl font-bold font-headline text-center mb-16 tracking-tight">Who is it for?</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center p-8 glass-panel rounded-3xl border border-outline-variant/10">
+<div class="text-primary mb-4 flex justify-center"><span class="material-symbols-outlined text-5xl" data-icon="person">person</span></div>
+<h4 class="font-bold text-xl mb-2 text-on-surface">Consumers</h4>
+<p class="text-sm text-on-surface-variant">Protect your rights without the $400/hr price tag. Perfect for leases and simple contracts.</p>
+</div>
+<div class="text-center p-8 glass-panel rounded-3xl border border-outline-variant/10">
+<div class="text-primary mb-4 flex justify-center"><span class="material-symbols-outlined text-5xl" data-icon="balance">balance</span></div>
+<h4 class="font-bold text-xl mb-2 text-on-surface">Lawyers</h4>
+<p class="text-sm text-on-surface-variant">Automate routine tasks, research faster, and focus on high-value billable strategy work.</p>
+</div>
+<div class="text-center p-8 glass-panel rounded-3xl border border-outline-variant/10">
+<div class="text-primary mb-4 flex justify-center"><span class="material-symbols-outlined text-5xl" data-icon="business">business</span></div>
+<h4 class="font-bold text-xl mb-2 text-on-surface">Law Firms</h4>
+<p class="text-sm text-on-surface-variant">Scale your practice. Onboard associates faster and ensure consistent drafting across the firm.</p>
+</div>
+<div class="text-center p-8 glass-panel rounded-3xl border border-outline-variant/10">
+<div class="text-primary mb-4 flex justify-center"><span class="material-symbols-outlined text-5xl" data-icon="school">school</span></div>
+<h4 class="font-bold text-xl mb-2 text-on-surface">Law Students</h4>
+<p class="text-sm text-on-surface-variant">Summarize cases, compare legal theories, and study more efficiently for the Bar exam.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Use Cases Grid (Key Addition 10) -->
+<section class="py-32 bg-surface-container-low" id="use-cases">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="text-4xl font-bold font-headline mb-4 tracking-tight">Legal Expertise in Every Domain</h2>
+<p class="text-on-surface-variant max-w-2xl">Specialized AI models trained on niche legal domains for unparalleled precision.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Boilerplate</div>
+<p class="text-xs text-on-surface-variant">Standard terms &amp; conditions, privacy policies, and TOS drafting.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Immigration</div>
+<p class="text-xs text-on-surface-variant">Visa application guidance and document checklist analysis.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Tax Law</div>
+<p class="text-xs text-on-surface-variant">Regulatory compliance checks and local tax code interpretations.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Intellectual Property</div>
+<p class="text-xs text-on-surface-variant">Patent search summaries and copyright infringement analysis.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Employment</div>
+<p class="text-xs text-on-surface-variant">Workplace agreements, non-compete reviews, and HR compliance.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Real Estate</div>
+<p class="text-xs text-on-surface-variant">Lease agreement auditing and deed transfer document analysis.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Corporate Law</div>
+<p class="text-xs text-on-surface-variant">M&amp;A due diligence, shareholder agreements, and bylaws.</p>
+</div>
+<div class="p-6 bg-surface border border-outline-variant/10 rounded-xl hover:border-primary/40 transition-colors">
+<div class="text-primary font-bold mb-2">Family Law</div>
+<p class="text-xs text-on-surface-variant">Prenuptial drafting and settlement agreement reviews.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section (Key Addition 6) -->
+<section class="py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<h2 class="text-4xl font-bold font-headline text-center mb-16 tracking-tight">Success Stories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Testimonial 1 -->
+<div class="glass-panel p-8 rounded-3xl border border-outline-variant/20 space-y-6">
+<div class="flex text-primary">
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+</div>
+<p class="text-lg italic text-on-surface">"As a solo practitioner, Lex Nova is like having three associates for the price of a Netflix subscription. The research accuracy is uncanny."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest"></div>
+<div>
+<div class="font-bold">Sarah Mitchell</div>
+<div class="text-xs text-on-surface-variant uppercase">Criminal Defense Attorney</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-panel p-8 rounded-3xl border border-outline-variant/20 space-y-6">
+<div class="flex text-primary">
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+<span class="material-symbols-outlined fill-1" data-icon="star">star</span>
+</div>
+<p class="text-lg italic text-on-surface">"The contract summarization tool saved us dozens of hours during our Series A funding. We caught terms we might have otherwise missed."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest"></div>
+<div>
+<div class="font-bold">Elizabeth Martin</div>
+<div class="text-xs text-on-surface-variant uppercase">Startup Founder</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mobile App Promotion (Key Addition 7) -->
+<section class="py-24 bg-primary/5">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-8">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline leading-tight tracking-tight">The power of a law firm <br/><span class="text-primary">in your pocket.</span></h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    Download the Lex Nova app for iOS and Android. Review documents on the train, get instant legal alerts, and consult your personal AI assistant anywhere in the world.
+                </p>
+<div class="flex gap-4">
+<button class="bg-surface-container-high border border-outline-variant/30 px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="apple">apple</span>
+<div class="text-left">
+<div class="text-[10px] uppercase font-bold text-on-surface-variant leading-none">Download on the</div>
+<div class="font-bold leading-none">App Store</div>
+</div>
+</button>
+<button class="bg-surface-container-high border border-outline-variant/30 px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="shop">shop</span>
+<div class="text-left">
+<div class="text-[10px] uppercase font-bold text-on-surface-variant leading-none">Get it on</div>
+<div class="font-bold leading-none">Google Play</div>
+</div>
+</button>
+</div>
+</div>
+<div class="flex-1 flex justify-center relative">
+<div class="w-64 h-[500px] bg-surface-container-highest rounded-[3rem] border-[8px] border-surface-variant shadow-2xl relative overflow-hidden flex items-center justify-center">
+<div class="p-6 text-center space-y-4">
+<div class="w-16 h-16 bg-primary/20 rounded-full mx-auto flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="gavel">gavel</span>
+</div>
+<div class="text-sm font-bold">Lex Nova AI</div>
+<div class="text-[10px] text-on-surface-variant">Consultation Active...</div>
+<div class="h-2 w-32 bg-primary/20 rounded-full mx-auto"></div>
+<div class="h-2 w-24 bg-primary/20 rounded-full mx-auto"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Blog & Insights (Key Addition 8) -->
+<section class="py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="text-4xl font-bold font-headline mb-4 tracking-tight">Legal Insights</h2>
+<p class="text-on-surface-variant">The latest on AI regulation and digital jurisprudence.</p>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-2">View all articles <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<article class="group cursor-pointer">
+<div class="aspect-video bg-surface-container rounded-2xl mb-6 overflow-hidden border border-outline-variant/10">
+<img alt="Legal blog" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYbp8UBi3vGy7zKI1hSnPizxxIw6FXS8EvHm0RnaLnpu9M2XMRGyYi9JsSoi8ELVGOTzqmS-e0htZQO87pisGalDugNaVcpmWtvWwGIM-8KxctdsTgRAv6Uqrthmyq6SUFByxOm7PgZYo8swd3IimT7a_Hv6tY4_swqNxyHVNubAD2WirOJ3lfwqRKBrbj9J5L0IVXtGlI2HWKDhSlXiWOGYLqbSpqWoHSp5pGzxm0xH6UavmZWbpxe5UO0hQFuYS7-WrZSzcZBA"/>
+</div>
+<div class="text-xs text-primary font-bold mb-2 uppercase tracking-widest">Regulation</div>
+<h3 class="text-xl font-bold font-headline group-hover:text-primary transition-colors">The EU AI Act: What it means for Legal Tech</h3>
+<p class="mt-3 text-on-surface-variant text-sm line-clamp-2">How new regulations are shaping the development of professional AI tools in the legal sector...</p>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-video bg-surface-container rounded-2xl mb-6 overflow-hidden border border-outline-variant/10">
+<img alt="Case law" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl5q6GArne66qNQXKN1TlaeyKzTmP2JQ2HxXaWC7HcSHmpAd0RCU6rNk4aL5REvXVpa1JlEfvjO91AsXeB_pcAAaNb9UT1n4qT6s6r9FKub1ZmwOnP6dzQLsrBr6B53H4Q1-U76DDY8PwlHkZmo65mHGihzPpf02Oagqse-Ex-xTAESRmx0BaNl21nyyEPqlNtZk0PrByRMqS9YzzwtDgsMHzaw-D4id6C67tyI3f0ds3gMs2mFWx_jltbkE1uUw7m38g0PozR0A"/>
+</div>
+<div class="text-xs text-primary font-bold mb-2 uppercase tracking-widest">Case Study</div>
+<h3 class="text-xl font-bold font-headline group-hover:text-primary transition-colors">Speeding up Due Diligence by 300%</h3>
+<p class="mt-3 text-on-surface-variant text-sm line-clamp-2">A deep dive into how mid-sized firms are using Lex Nova to compete with Big Law...</p>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-video bg-surface-container rounded-2xl mb-6 overflow-hidden border border-outline-variant/10">
+<img alt="Workspace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcvedsVOnyv7r5f_onIhN1KQVq7W0c29wa7bS7VcxGLCiQz_DNosUWZSiN9W-bXVYu-oka7gnBYQuMWgR5uTMuTHaXxpO3GGFjGFfzA_BN5bmwLDbK-_Q3sJcLViuQ_LSDWD9Ecu7RCeK5pZdlNJWTolkpixxo8wwT2bRDYgTaI2wxjn1d_HmN-ZObSfjimOv0jONbDR8GKE_FqemEnWlID2OYoB-kDJAwbVb05ZwQ5ydBf6iN8YIXk6wAg8N55W0omJU4R80HqA"/>
+</div>
+<div class="text-xs text-primary font-bold mb-2 uppercase tracking-widest">Future of Work</div>
+<h3 class="text-xl font-bold font-headline group-hover:text-primary transition-colors">The Associate of 2030: AI-First Lawyering</h3>
+<p class="mt-3 text-on-surface-variant text-sm line-clamp-2">Predicting the evolution of legal education and firm structure in the age of intelligence...</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Templates & FAQ (Key Addition 9) -->
+<section class="py-32 bg-surface-container-low" id="faq">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div>
+<h2 class="text-3xl font-bold font-headline mb-8">Popular Free Templates</h2>
+<div class="space-y-4">
+<div class="p-4 glass-panel border border-outline-variant/10 rounded-xl flex justify-between items-center hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<span class="font-semibold">Mutual Non-Disclosure Agreement</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+<div class="p-4 glass-panel border border-outline-variant/10 rounded-xl flex justify-between items-center hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="work">work</span>
+<span class="font-semibold">Independent Contractor Services</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+<div class="p-4 glass-panel border border-outline-variant/10 rounded-xl flex justify-between items-center hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="house">house</span>
+<span class="font-semibold">Residential Lease Agreement</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+<div class="p-4 glass-panel border border-outline-variant/10 rounded-xl flex justify-between items-center hover:border-primary transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="assignment">assignment</span>
+<span class="font-semibold">Website Terms of Service</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="download">download</span>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold font-headline mb-8">FAQ</h2>
+<div class="space-y-6">
+<div class="border-b border-outline-variant/10 pb-4">
+<h4 class="font-bold mb-2">Is Lex Nova a replacement for a lawyer?</h4>
+<p class="text-sm text-on-surface-variant">Lex Nova provides AI-powered legal information and document drafting. While highly accurate, we recommend consulting a licensed attorney for high-stakes litigation or final approval of complex contracts.</p>
+</div>
+<div class="border-b border-outline-variant/10 pb-4">
+<h4 class="font-bold mb-2">How do you handle data privacy?</h4>
+<p class="text-sm text-on-surface-variant">We use bank-grade AES-256 encryption. Your documents are never used to train our base AI models, and you maintain 100% ownership of your data at all times.</p>
+</div>
+<div class="border-b border-outline-variant/10 pb-4">
+<h4 class="font-bold mb-2">Does it work internationally?</h4>
+<p class="text-sm text-on-surface-variant">Yes, our systems are trained on legal frameworks across the US, EU, UK, and major Asian markets, supporting over 50 languages.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section (Key Addition 11) -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="cta-gradient rounded-[2rem] p-12 md:p-20 text-center space-y-8 shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-[10rem]" data-icon="verified_user">verified_user</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline text-on-primary tracking-tighter">AI Lawyer protects your rights and wallet.</h2>
+<p class="text-on-primary/80 text-lg max-w-xl mx-auto">
+                    Start today and get your first 3 documents analyzed for free. No credit card required.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+<button class="bg-on-primary text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-white transition-colors active:scale-95">Create Free Account</button>
+<button class="border border-on-primary/30 text-on-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-on-primary/10 transition-colors active:scale-95">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#111317] w-full py-16 px-8 border-t border-[#1a1c20]">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="text-2xl font-bold text-[#adc6ff] font-manrope tracking-tighter">Lex Nova</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                Empowering individuals and firms with elite-tier legal intelligence at the speed of thought.
+            </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="public">public</span>
+</a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="mail">mail</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6">Product</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Templates</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mobile App</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Resources</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Legal Insights</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Reference</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Support Center</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Trust</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security Whitepaper</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Data Processing</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+<p class="text-sm text-on-surface-variant font-manrope">© 2024 Lex Nova AI. The Digital Jurist. All rights reserved.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<span class="text-xs text-on-surface-variant/40">Powered by GPT-4o</span>
+<span class="text-xs text-on-surface-variant/40">Made with ❤️ for Jurisprudence</span>
+</div>
+</div>
+</footer>
+</body></html>

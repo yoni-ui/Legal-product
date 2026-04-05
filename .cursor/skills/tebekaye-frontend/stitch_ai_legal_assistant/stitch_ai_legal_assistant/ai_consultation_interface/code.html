@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Consultation - Digital Jurist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@300..700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#111317",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "secondary-container": "#0146db",
+                        "primary-container": "#4d8eff",
+                        "outline": "#8c909f",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-high": "#282a2e",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1a1c20",
+                        "inverse-primary": "#005ac2",
+                        "secondary": "#b7c4ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-secondary-container": "#c0cbff",
+                        "on-secondary-fixed-variant": "#0039b5",
+                        "on-secondary-fixed": "#001552",
+                        "surface-bright": "#37393e",
+                        "surface-dim": "#111317",
+                        "on-tertiary-container": "#29292d",
+                        "on-tertiary-fixed-variant": "#46464a",
+                        "tertiary-fixed-dim": "#c8c6ca",
+                        "surface": "#111317",
+                        "on-background": "#e2e2e8",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-surface": "#e2e2e8",
+                        "inverse-on-surface": "#2f3035",
+                        "on-tertiary": "#303033",
+                        "tertiary-fixed": "#e4e2e6",
+                        "outline-variant": "#424754",
+                        "on-primary-container": "#00285d",
+                        "surface-tint": "#adc6ff",
+                        "primary": "#adc6ff",
+                        "tertiary": "#c8c6ca",
+                        "inverse-surface": "#e2e2e8",
+                        "on-secondary": "#002682",
+                        "on-primary-fixed": "#001a42",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002e6a",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#919094",
+                        "surface-container-highest": "#333539",
+                        "surface-container": "#1e2024",
+                        "secondary-fixed-dim": "#b7c4ff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-variant": "#333539",
+                        "secondary-fixed": "#dce1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #111317;
+            color: #e2e2e8;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background-color: rgba(51, 53, 57, 0.6);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111317; }
+        ::-webkit-scrollbar-thumb { background: #333539; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-slate-900 h-screen w-64 border-r border-white/5 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-lg font-black tracking-tighter text-slate-100">Legal Intel</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">AI-Powered Authority</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span>Active Cases</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Documents</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-blue-400 border-r-2 border-blue-400 bg-blue-400/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span>AI Consultation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Deadlines</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1 pt-8 border-t border-white/5">
+<button class="w-full mb-4 py-3 px-4 bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-bold rounded-xl text-sm transition-transform active:scale-95 shadow-lg shadow-primary/20">
+                New Consultation
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm font-medium tracking-wide text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 ml-64 flex flex-col h-screen relative">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-6 h-16 w-full bg-slate-950/80 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black/50">
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent font-manrope tracking-tight">Digital Jurist</span>
+<div class="hidden md:flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-white/10">
+<span class="material-symbols-outlined text-slate-400 text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-slate-200 placeholder:text-slate-500 w-64" placeholder="Search precedents..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-blue-400/30">
+<img alt="Senior Counsel Profile" class="w-full h-full object-cover" data-alt="Professional portrait of a middle-aged senior legal counsel in a dark suit against a minimalist gray office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD85gsyBjrzO0cNlnaJ1u0agWhBafO72JcX2ar4k0zTi-1aZoSqER7qOpW_rvDrOtK9bIUZKXCfMHtWEa5AuZyFx2dwP4vnW2Qj1xweg0XRYzaVtRxpsVvxTQWIAN6f_jlL1qiaHjlj6n8V_B0Prv7dE7GLbfhrLQxNEYpN-97R-lFn_ejp5VEW3JuTQUmFdtWQPyDpM_71ltTVXTO6UjbRyatli7OFrLsJT9PessGDLb5m7x5FUolzrMCqZAZPhhftbKv1PrnIw"/>
+</div>
+</div>
+</header>
+<!-- Content Split Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Chat Interface (Left) -->
+<section class="flex-1 flex flex-col bg-surface overflow-hidden border-r border-white/5">
+<!-- Status Indicator -->
+<div class="flex items-center justify-between px-8 py-3 bg-surface-container-low/50 border-b border-white/5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-headline font-semibold tracking-wide text-primary">AI Engine: Lex Nova 4.0 - Active Research Mode</span>
+</div>
+<div class="text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded uppercase tracking-tighter">Latency: 24ms</div>
+</div>
+<!-- Message History -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- User Message -->
+<div class="flex flex-col items-end space-y-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Senior Counsel</span>
+<div class="h-6 w-6 rounded-full bg-slate-800 flex items-center justify-center text-[10px] text-slate-400 font-bold border border-white/10">SC</div>
+</div>
+<div class="max-w-[80%] bg-surface-container-highest text-on-surface p-4 rounded-2xl rounded-tr-none shadow-lg">
+                            Analyze the liability clauses in the Global Corp MSA. Specifically, look for conflict with the new EU Digital Services Act (DSA) Article 12 compliance requirements.
+                        </div>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col items-start space-y-2">
+<div class="flex items-center gap-2 mb-1">
+<div class="h-6 w-6 rounded-full bg-primary-container flex items-center justify-center text-[10px] text-on-primary-container font-black border border-white/10">AI</div>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Legal AI</span>
+</div>
+<div class="max-w-[85%] glass-effect text-on-surface p-6 rounded-2xl rounded-tl-none border border-white/5 shadow-2xl relative overflow-hidden">
+<!-- Subtle Glow -->
+<div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-primary-container"></div>
+<p class="mb-4 leading-relaxed">I have reviewed the **Master Services Agreement (MSA)** for **Global Corp** against the **EU Digital Services Act (DSA)** framework. My analysis indicates a high-risk misalignment in Section 8.4 (Liability Limitations).</p>
+<h4 class="font-headline font-bold text-blue-300 mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">balance</span>
+                                Key Discrepancies
+                            </h4>
+<ul class="space-y-3 mb-6">
+<li class="flex gap-3">
+<span class="text-primary mt-1">•</span>
+<span>**Article 12 Compliance:** The current MSA broadens liability exemptions for "Intermediary Services" beyond what is permitted under the new transparency mandate.</span>
+</li>
+<li class="flex gap-3">
+<span class="text-primary mt-1">•</span>
+<span>**Statutory Precedence:** Under the DSA, contractual limitations cannot override the duty of care regarding systemic risk mitigation.</span>
+</li>
+</ul>
+<div class="p-3 bg-surface-container-lowest rounded-lg border-l-2 border-primary/40 italic text-sm text-on-surface-variant">
+                                "The provider of intermediary services shall include information on any restrictions that they impose in relation to the use of their service..." — DSA, Art. 12(1)
+                            </div>
+</div>
+</div>
+<!-- User Message 2 -->
+<div class="flex flex-col items-end space-y-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Senior Counsel</span>
+<div class="h-6 w-6 rounded-full bg-slate-800 flex items-center justify-center text-[10px] text-slate-400 font-bold border border-white/10">SC</div>
+</div>
+<div class="max-w-[80%] bg-surface-container-highest text-on-surface p-4 rounded-2xl rounded-tr-none shadow-lg">
+                            Can we draft a carve-out for Section 8.4 that specifically references these systemic risk mandates while maintaining our general indemnity cap?
+                        </div>
+</div>
+</div>
+<!-- Input Field -->
+<div class="p-6 bg-surface-container-low border-t border-white/5">
+<div class="max-w-4xl mx-auto relative group">
+<div class="flex items-center gap-2 mb-2 px-2">
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-white/5 text-[10px] text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">attach_file</span> Attach Document
+                            </button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high border border-white/5 text-[10px] text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">folder_open</span> Select Case
+                            </button>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-highest rounded-2xl p-2 border border-white/10 focus-within:border-primary/40 transition-all shadow-inner">
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-slate-600 resize-none px-4 py-2 min-h-[48px] max-h-32 font-body text-sm" placeholder="Type legal inquiry or paste citation..."></textarea>
+<button class="p-3 bg-gradient-to-br from-primary to-primary-container text-on-primary-container rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Context Sidebar (Right) -->
+<aside class="w-80 bg-surface-container-low overflow-y-auto p-6 space-y-8">
+<!-- Current Case Summary -->
+<section>
+<h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Current Case</h3>
+<div class="p-5 bg-surface-container rounded-2xl border border-white/5 shadow-xl">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<h4 class="font-headline font-extrabold text-sm text-slate-100">Global Corp vs. Tech Innovators</h4>
+<p class="text-[10px] text-slate-500">Matter #2024-881-A</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Stage:</span>
+<span class="text-blue-400 font-medium">Discovery Phase</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">Opposing:</span>
+<span class="text-slate-200">Legal Nexus LLP</span>
+</div>
+<div class="w-full bg-slate-800 h-1 mt-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Relevant Statutes -->
+<section>
+<h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Relevant Statutes</h3>
+<div class="space-y-2">
+<a class="flex items-center justify-between p-3 bg-surface hover:bg-surface-container-high rounded-xl border border-white/5 transition-all group" href="#">
+<span class="text-xs font-medium text-slate-300 group-hover:text-primary">EU DSA Art. 12</span>
+<span class="material-symbols-outlined text-sm text-slate-600">open_in_new</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface hover:bg-surface-container-high rounded-xl border border-white/5 transition-all group" href="#">
+<span class="text-xs font-medium text-slate-300 group-hover:text-primary">GDPR Recital 74</span>
+<span class="material-symbols-outlined text-sm text-slate-600">open_in_new</span>
+</a>
+<a class="flex items-center justify-between p-3 bg-surface hover:bg-surface-container-high rounded-xl border border-white/5 transition-all group" href="#">
+<span class="text-xs font-medium text-slate-300 group-hover:text-primary">UCC § 2-719</span>
+<span class="material-symbols-outlined text-sm text-slate-600">open_in_new</span>
+</a>
+</div>
+</section>
+<!-- Cited Documents -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Cited Documents</h3>
+<span class="text-[10px] text-blue-400 font-bold">4 Files</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-2 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-slate-200 truncate">Global_Corp_MSA_v4.pdf</p>
+<p class="text-[10px] text-slate-500">Last accessed 2m ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 group cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-slate-200 truncate">Indemnity_Clause_Draft.pdf</p>
+<p class="text-[10px] text-slate-500">Last accessed 15m ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 group cursor-pointer opacity-50">
+<div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-lg">article</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-slate-200 truncate">EU_DSA_Full_Text.docx</p>
+<p class="text-[10px] text-slate-500">Ref: Statutory Background</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Decorative Anchor -->
+<div class="mt-auto p-4 rounded-2xl bg-gradient-to-br from-surface-container-high to-surface-container-highest border border-white/10 relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Knowledge Graph</p>
+<p class="text-[9px] text-slate-400">Legal AI mapping contextual relationships for Tech Innovators.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 w-24 h-24 opacity-20">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

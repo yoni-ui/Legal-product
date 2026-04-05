@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lex Nova | Legal Drafting Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#e2e2e8",
+                    "surface-tint": "#adc6ff",
+                    "on-tertiary-fixed": "#1b1b1f",
+                    "tertiary": "#c8c6ca",
+                    "outline-variant": "#424754",
+                    "inverse-surface": "#e2e2e8",
+                    "on-tertiary-fixed-variant": "#46464a",
+                    "on-primary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#c8c6ca",
+                    "outline": "#8c909f",
+                    "on-secondary-container": "#c0cbff",
+                    "secondary-container": "#0146db",
+                    "on-secondary-fixed": "#001552",
+                    "surface-bright": "#37393e",
+                    "on-secondary": "#002682",
+                    "surface-container-low": "#1a1c20",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed-variant": "#0039b5",
+                    "primary-fixed": "#d8e2ff",
+                    "tertiary-container": "#919094",
+                    "secondary-fixed": "#dce1ff",
+                    "secondary": "#b7c4ff",
+                    "primary-container": "#4d8eff",
+                    "surface-dim": "#111317",
+                    "on-tertiary": "#303033",
+                    "inverse-on-surface": "#2f3035",
+                    "secondary-fixed-dim": "#b7c4ff",
+                    "inverse-primary": "#005ac2",
+                    "background": "#111317",
+                    "surface-variant": "#333539",
+                    "on-primary-fixed": "#001a42",
+                    "surface-container-lowest": "#0c0e12",
+                    "surface-container-highest": "#333539",
+                    "on-primary": "#002e6a",
+                    "surface-container-high": "#282a2e",
+                    "primary": "#adc6ff",
+                    "error-container": "#93000a",
+                    "surface": "#111317",
+                    "on-primary-container": "#00285d",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#e4e2e6",
+                    "on-surface": "#e2e2e8",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#29292d",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-container": "#1e2024",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #111317;
+            color: #e2e2e8;
+            font-family: 'Inter', sans-serif;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+        }
+        .glass {
+            backdrop-filter: blur(20px);
+            background: rgba(51, 53, 57, 0.6);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#111317] flex justify-between items-center w-full px-6 py-3 font-manrope tracking-tight border-b border-outline-variant/10">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff]">Lex Nova</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-gray-400 font-medium hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-[#adc6ff] border-b-2 border-[#adc6ff] pb-1 font-medium transition-colors" href="#">Documents</a>
+<a class="text-gray-400 font-medium hover:text-white transition-colors" href="#">Library</a>
+<a class="text-gray-400 font-medium hover:text-white transition-colors" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-bold text-sm hover:opacity-90 active:scale-95 transition-all">
+                Export
+            </button>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-colors" data-icon="history">history</span>
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-colors" data-icon="settings">settings</span>
+<img alt="Legal professional profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Professional portrait of a lawyer in a dark suit with soft studio lighting and a clean gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQew9rIvkJsL11JzogvSa0D6faxS-Dl67tWABFfvXyh2P8M0WuoG_CrBqvrJ2qf8s1GLgXcR2bP9Nw4t8aBpturT0nnvp2JWoI5Uzl-ZJQP0dz9EsnZywxPddkOUQPuvFR2jFVXMRlhlcpSJj91MOT7cDicWfTD9kFzOWkX9zjf7128nMW_Uc60bFF_1IbGmNhS_GPZpAo8mSAtsoTp-VmeQx6JKP_rDuHpOXAYa1nAQ0psRIPYYerUZ6jvxYOPxB6GuDPKAKQbQ"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col p-4 bg-[#1a1c20] z-40 transition-all duration-300 ease-in-out pt-20">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-[#adc6ff] leading-none">Lex Nova AI</h2>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Precision Drafting</p>
+</div>
+</div>
+</div>
+<button class="mb-8 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container-high text-[#adc6ff] font-bold border border-outline-variant/20 hover:bg-[#282a2e] transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Document
+        </button>
+<nav class="flex-1 space-y-1 font-manrope font-semibold">
+<a class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-[#282a2e] hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+                Drafting
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-[#282a2e] hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+                Clauses
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-[#282a2e] text-[#adc6ff] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+                AI Assistant
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-[#282a2e] hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="travel_explore">travel_explore</span>
+                Research
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-gray-500 hover:bg-[#282a2e] hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                Versions
+            </a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span>
+                Help
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm text-gray-500 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="gavel">gavel</span>
+                Privacy
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 mt-[60px] mb-[40px] flex h-[calc(100vh-100px)]">
+<!-- Document Editor -->
+<div class="flex-1 flex flex-col bg-background relative overflow-hidden">
+<!-- Formatting Toolbar -->
+<div class="h-12 border-b border-outline-variant/10 flex items-center px-6 gap-6 bg-surface-container-low">
+<div class="flex items-center gap-1 border-r border-outline-variant/20 pr-4">
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="undo">undo</span></button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="redo">redo</span></button>
+</div>
+<div class="flex items-center gap-1 border-r border-outline-variant/20 pr-4">
+<button class="px-3 py-1 text-xs font-medium bg-surface-container-highest rounded text-on-surface">Normal Text</button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="format_bold">format_bold</span></button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="format_italic">format_italic</span></button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="format_underlined">format_underlined</span></button>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="format_align_left">format_align_left</span></button>
+<button class="p-1.5 hover:bg-surface-container-highest rounded-md text-on-surface-variant"><span class="material-symbols-outlined text-sm" data-icon="comment">comment</span></button>
+</div>
+</div>
+<!-- Canvas -->
+<div class="flex-1 overflow-y-auto p-12 flex justify-center no-scrollbar">
+<div class="w-full max-w-4xl bg-surface-container p-16 editorial-shadow min-h-[1200px] border border-outline-variant/10 rounded-sm">
+<h1 class="text-3xl font-headline font-bold text-on-surface mb-8">Master Services Agreement</h1>
+<div class="space-y-6 text-on-surface-variant leading-relaxed text-sm font-body">
+<p>This Master Services Agreement (the "Agreement") is entered into as of October 24, 2023, by and between Lex Nova Systems, LLC ("Client") and Digital Dynamics Corp ("Contractor").</p>
+<h3 class="text-on-surface font-bold mt-8 mb-4">1. SERVICES</h3>
+<p>Contractor shall provide the services described in each Statement of Work executed by the parties from time to time under this Agreement.</p>
+<h3 class="text-on-surface font-bold mt-8 mb-4">2. COMPENSATION</h3>
+<p>Client shall pay Contractor the fees set forth in the applicable Statement of Work. All undisputed invoices are due within thirty (30) days of receipt.</p>
+<div class="relative group">
+<div class="absolute -left-8 top-0 bottom-0 w-1 bg-primary/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<h3 class="text-on-surface font-bold mt-8 mb-4">3. TERMINATION</h3>
+<p class="bg-primary/5 rounded border-l-2 border-primary/30 py-2 px-3">3.1 <span class="bg-primary/10 px-1 rounded text-primary">Termination for Convenience.</span> Either party may terminate this Agreement at any time, for any reason or no reason, upon providing the other party with [X] days' prior written notice.</p>
+<p class="mt-4">3.2 Termination for Cause. Either party may terminate this Agreement immediately upon written notice if the other party breaches a material term of this Agreement and fails to cure such breach within fifteen (15) days.</p>
+</div>
+<h3 class="text-on-surface font-bold mt-8 mb-4">4. CONFIDENTIALITY</h3>
+<p>Each party agrees to maintain the confidentiality of the other party's Confidential Information and not to disclose it to any third party except as required by law.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (AI Assistant) -->
+<div class="w-96 border-l border-outline-variant/10 flex flex-col bg-[#1a1c20]">
+<div class="p-6 border-b border-outline-variant/10">
+<h2 class="text-on-surface font-headline font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+                    AI Drafting Assistant
+                </h2>
+<div class="mt-4 flex bg-surface-container rounded-lg p-1">
+<button class="flex-1 text-xs py-1.5 rounded-md bg-[#282a2e] text-[#adc6ff] font-semibold">Clause Drafting</button>
+<button class="flex-1 text-xs py-1.5 text-gray-500 font-medium hover:text-white">Analysis</button>
+<button class="flex-1 text-xs py-1.5 text-gray-500 font-medium hover:text-white">Risk Profile</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Suggested Clause -->
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] text-primary uppercase tracking-widest font-bold">Recommended Clause</span>
+<span class="text-[10px] text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded">High Match</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container border border-primary/20 relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm text-primary cursor-pointer" data-icon="info">info</span>
+</div>
+<h4 class="text-sm font-bold text-on-surface mb-2">Termination for Convenience</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            "Either party may terminate this Agreement, or any SOW, for any reason or no reason, upon sixty (60) days' prior written notice to the other party. In the event of termination under this Section, Client shall pay Contractor for all Services performed up to the effective date of termination."
+                        </p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-3">
+<button class="w-full py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary-container text-xs font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                        Accept Suggestion
+                    </button>
+<button class="w-full py-2.5 bg-surface-container-high border border-outline-variant/20 text-on-surface text-xs font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="auto_fix">auto_fix</span>
+                        Refine with AI
+                    </button>
+<button class="w-full py-2.5 text-primary text-xs font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="library_books">library_books</span>
+                        Browse Library
+                    </button>
+</div>
+<!-- Context Insight -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/10">
+<h5 class="text-xs font-bold text-on-surface mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="lightbulb">lightbulb</span>
+                        Jurist Insight
+                    </h5>
+<p class="text-[11px] text-gray-500 leading-relaxed italic">
+                        "Market standard for MSAs in the Tech sector typically favors a 30 to 60 day notice period. The proposed 60-day clause provides better operational security for the Contractor."
+                    </p>
+</div>
+</div>
+<!-- AI Input Box -->
+<div class="p-4 bg-surface-container-high/50 backdrop-blur-md">
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 pl-4 pr-12 text-sm text-on-surface placeholder:text-gray-600 focus:ring-1 focus:ring-primary/40" placeholder="Ask Lex Nova to draft or edit..." type="text"/>
+<button class="absolute right-2 top-1.5 p-1.5 rounded-lg bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Bar -->
+<footer class="fixed bottom-0 left-0 right-0 h-[40px] bg-[#1a1c20] border-t border-outline-variant/10 flex items-center justify-between px-6 z-50">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+<span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Drafting Active</span>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">Autosaved 2m ago</span>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[10px] text-on-surface-variant font-medium">
+<span>Word Count: 1,420</span>
+<span>Characters: 8,642</span>
+</div>
+<div class="flex items-center gap-2 text-[10px] text-primary font-bold">
+<span class="material-symbols-outlined text-xs" data-icon="zoom_in">zoom_in</span>
+<span>100%</span>
+</div>
+</div>
+</footer>
+</body></html>

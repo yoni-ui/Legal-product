@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegalJurist AI - Document Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111317;
+            color: #e2e2e8;
+        }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1a1c20; }
+        ::-webkit-scrollbar-thumb { background: #333539; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4d8eff; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#c8c6ca",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-primary": "#002e6a",
+                        "surface-container-high": "#282a2e",
+                        "on-background": "#e2e2e8",
+                        "surface-container-highest": "#333539",
+                        "secondary": "#b7c4ff",
+                        "on-secondary": "#002682",
+                        "outline-variant": "#424754",
+                        "inverse-surface": "#e2e2e8",
+                        "surface-dim": "#111317",
+                        "surface-container-low": "#1a1c20",
+                        "secondary-fixed-dim": "#b7c4ff",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#adc6ff",
+                        "surface-container": "#1e2024",
+                        "inverse-on-surface": "#2f3035",
+                        "tertiary-fixed-dim": "#c8c6ca",
+                        "on-primary-container": "#00285d",
+                        "surface": "#111317",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#0039b5",
+                        "on-secondary-container": "#c0cbff",
+                        "background": "#111317",
+                        "surface-container-lowest": "#0c0e12",
+                        "primary": "#adc6ff",
+                        "surface-bright": "#37393e",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#29292d",
+                        "on-secondary-fixed": "#001552",
+                        "on-primary-fixed": "#001a42",
+                        "secondary-container": "#0146db",
+                        "on-tertiary-fixed-variant": "#46464a",
+                        "on-tertiary-fixed": "#1b1b1f",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-surface": "#e2e2e8",
+                        "inverse-primary": "#005ac2",
+                        "outline": "#8c909f",
+                        "primary-container": "#4d8eff",
+                        "surface-variant": "#333539",
+                        "on-tertiary": "#303033",
+                        "tertiary-fixed": "#e4e2e6",
+                        "tertiary-container": "#919094",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#adc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#111317] dark:bg-[#111317] flex justify-between items-center px-6 h-16 w-full font-manrope tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff]">LegalJurist AI</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[#333539] hover:text-[#adc6ff] transition-colors duration-200" href="#">Documents</a>
+<a class="text-[#adc6ff] font-bold border-b-2 border-[#adc6ff] pb-1 duration-200" href="#">Analysis</a>
+<a class="text-[#333539] hover:text-[#adc6ff] transition-colors duration-200" href="#">Templates</a>
+<a class="text-[#333539] hover:text-[#adc6ff] transition-colors duration-200" href="#">Archive</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-[#1a1c20] flex items-center px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 placeholder-outline-variant" placeholder="Global search..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#1e2024] p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#1e2024] p-2 rounded-full transition-colors">settings</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional headshot of a corporate lawyer in a dark suit with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8TdKHDkHubqG0A4jTgPFdd1VKzJyqUl1YOcY2dObUTg4ChjYz49C5bj8hilBay3JmNPN3NHBgujYs8kkD47kSGATP3o_Gpz7FFFcOi-s9LmQ1FZWDi9_-nBYgz7qox8AsKUb8N0kAGH1KE-6v8scRwtOsW7p-ROWHmUEgUT7-OxPTHtg9_67HAPf-M3IJozvGOLoyumzFblSo8k5b3Qflq0OU0iLc6cHEaK1c2OIWThOeVUlqpBfo2nVWlhOqMbrwJf-Dwbxk4Q"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-screen w-64 bg-[#1a1c20] dark:bg-[#1a1c20] flex flex-col py-4 gap-2 font-manrope text-sm z-40">
+<div class="px-6 py-4 mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-[#adc6ff]">gavel</span>
+</div>
+<div>
+<h3 class="text-lg font-black text-[#adc6ff] leading-none">Digital Jurist</h3>
+<p class="text-xs text-outline-variant">Enterprise Tier</p>
+</div>
+</div>
+</div>
+<div class="px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#adc6ff] font-semibold bg-[#1e2024] rounded-r-full" href="#">
+<span class="material-symbols-outlined">gavel</span>
+                Contract Review
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">warning</span>
+                Risk Assessment
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">library_books</span>
+                Clause Library
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">group</span>
+                Team Space
+            </a>
+</div>
+<div class="mt-4 px-6">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                New Analysis
+            </button>
+</div>
+<div class="mt-auto px-3 pb-20">
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#333539] hover:text-[#adc6ff] hover:bg-[#1e2024] transition-all duration-300 rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#adc6ff]">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pl-64 pt-16 min-h-screen">
+<div class="p-8 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex items-center gap-2 text-xs font-label text-outline mb-2">
+<span>Documents</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary-fixed-dim">Analysis</span>
+</nav>
+<h1 class="text-4xl font-headline font-extrabold tracking-tight text-on-surface">Master Services Agreement</h1>
+<p class="text-on-surface-variant mt-1">MSA_v4.2_Final_Reviewed.pdf • Uploaded 14 mins ago</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-high text-on-surface font-semibold flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-lg">compare_arrows</span>
+                        Compare with Template
+                    </button>
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-high text-on-surface font-semibold flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+                        Share
+                    </button>
+<button class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold flex items-center gap-2 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export Summary
+                    </button>
+</div>
+</div>
+<!-- Analysis Workspace -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- Left: Document Viewer -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl">
+<div class="bg-surface-container-high px-6 py-4 flex justify-between items-center border-b border-outline-variant/10">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">zoom_in</span>
+<span class="material-symbols-outlined text-on-surface-variant">zoom_out</span>
+<div class="h-6 w-[1px] bg-outline-variant/20 mx-2"></div>
+<span class="material-symbols-outlined text-on-surface-variant">content_copy</span>
+<span class="material-symbols-outlined text-on-surface-variant">print</span>
+</div>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Page 4 of 28</span>
+</div>
+<div class="p-12 min-h-[800px] bg-white/5 backdrop-blur-sm relative overflow-y-auto max-h-[1000px]">
+<!-- Mock Document Content -->
+<div class="max-w-2xl mx-auto space-y-6">
+<h2 class="text-2xl font-bold text-white mb-8 border-b border-white/10 pb-4 uppercase tracking-tighter">Section 12. Limitation of Liability</h2>
+<p class="text-white/80 leading-relaxed text-sm font-body">
+                                12.1 <span class="bg-error/20 border-l-2 border-error px-1 py-0.5 rounded-sm">Except as otherwise provided in this Agreement, neither party shall be liable for any indirect, incidental, special, exemplary or consequential damages</span>, including without limitation damages for loss of profits, goodwill, use, data or other intangible losses.
+                            </p>
+<p class="text-white/80 leading-relaxed text-sm font-body">
+                                12.2 <span class="bg-primary/20 border-l-2 border-primary px-1 py-0.5 rounded-sm">The total aggregate liability of the Consultant for all claims arising under this Agreement shall not exceed the total fees paid by the Client</span> during the twelve (12) month period immediately preceding the date on which the claim arose.
+                            </p>
+<h2 class="text-2xl font-bold text-white mt-12 mb-8 border-b border-white/10 pb-4 uppercase tracking-tighter">Section 13. Indemnification</h2>
+<p class="text-white/80 leading-relaxed text-sm font-body">
+                                13.1 <span class="bg-surface-tint/20 border-l-2 border-surface-tint px-1 py-0.5 rounded-sm">Consultant shall indemnify and hold harmless Client from and against any third-party claims</span> arising out of (a) Consultant's breach of its confidentiality obligations; or (b) Consultant's gross negligence or willful misconduct in the performance of the Services.
+                            </p>
+<p class="text-white/80 leading-relaxed text-sm font-body">
+                                13.2 The Client shall provide prompt written notice to the Consultant of any claim subject to indemnification. The Client's failure to provide prompt notice shall not relieve the Consultant of its obligations, except to the extent that the Consultant is materially prejudiced by such failure.
+                            </p>
+</div>
+<!-- Floating Highlight Tooltip (AI Interaction) -->
+<div class="absolute top-[280px] right-20 w-64 bg-surface-container-highest p-4 rounded-xl shadow-2xl border border-primary/20 backdrop-blur-xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm" data-weight="fill">auto_awesome</span>
+<span class="text-xs font-bold text-primary tracking-widest uppercase">AI Insight</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">This clause is aggressively weighted in favor of the Consultant. Consider negotiating a carve-out for data breach liabilities.</p>
+</div>
+</div>
+</div>
+<!-- Right: Analysis Panel -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<!-- Risk Score Card -->
+<div class="bg-surface-container-low p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl">verified_user</span>
+</div>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline mb-6">Risk Assessment</h3>
+<div class="flex items-center gap-8">
+<div class="relative w-32 h-32">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-error" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="105.5" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-on-surface">72</span>
+<span class="text-[10px] text-outline uppercase">Critical</span>
+</div>
+</div>
+<div class="space-y-4 flex-1">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium">Compliance</span>
+<span class="text-sm text-primary">94%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full">
+<div class="bg-primary h-1 rounded-full w-[94%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium">Financial Risk</span>
+<span class="text-sm text-error">78%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full">
+<div class="bg-error h-1 rounded-full w-[78%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Section: Executive Summary -->
+<div class="bg-surface-container rounded-2xl p-6 border-l-4 border-primary/40">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-weight="fill">description</span>
+<h3 class="font-bold text-on-surface">Executive Summary</h3>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            This Master Services Agreement governs the delivery of IT consulting services. The primary risk exposure lies in the <span class="text-primary font-bold">uncapped liability</span> for specific indemnity breaches and the <span class="text-primary font-bold">narrow definition</span> of "Force Majeure." The termination convenience clause requires a 90-day notice, which is above the industry standard of 30 days.
+                        </p>
+</div>
+<!-- Key Clauses Accordion-like list -->
+<div class="space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline px-2">Identified Key Clauses</h3>
+<!-- Clause 1 -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="font-bold text-on-surface">Limitation of Liability</span>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">The aggregate liability is capped at 100% of fees. This excludes standard market carve-outs for IP infringement.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-[10px] rounded-full font-bold uppercase">High Risk</span>
+<span class="px-2 py-0.5 bg-surface-container-high text-outline text-[10px] rounded-full font-bold uppercase">Financial</span>
+</div>
+</div>
+<!-- Clause 2 -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-bold text-on-surface">Intellectual Property</span>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">Standard Work-for-Hire provisions. Client retains ownership of all deliverables upon final payment.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 bg-primary-container/30 text-primary text-[10px] rounded-full font-bold uppercase">Standard</span>
+<span class="px-2 py-0.5 bg-surface-container-high text-outline text-[10px] rounded-full font-bold uppercase">Ownership</span>
+</div>
+</div>
+<!-- Clause 3 -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-transparent hover:border-outline-variant/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-bold text-on-surface">Data Privacy &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2">GDPR compliance is stated, but DPA (Data Processing Addendum) is missing from the exhibits.</p>
+<div class="mt-3 flex gap-2">
+<span class="px-2 py-0.5 bg-secondary-container/30 text-secondary text-[10px] rounded-full font-bold uppercase">Medium Risk</span>
+<span class="px-2 py-0.5 bg-surface-container-high text-outline text-[10px] rounded-full font-bold uppercase">Compliance</span>
+</div>
+</div>
+</div>
+<!-- Upload Area (Action Zone) -->
+<div class="mt-8 border-2 border-dashed border-outline-variant/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center group hover:border-primary transition-colors cursor-pointer bg-surface-container-lowest/50">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+</div>
+<h4 class="text-sm font-bold text-on-surface">Upload New Document</h4>
+<p class="text-xs text-outline-variant mt-1">Drag and drop or click to browse files<br/>(PDF, DOCX up to 50MB)</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Mobile only) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-low h-16 flex items-center justify-around z-50">
+<span class="material-symbols-outlined text-primary" data-weight="fill">dashboard</span>
+<span class="material-symbols-outlined text-outline">gavel</span>
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center -mt-8 shadow-xl">
+<span class="material-symbols-outlined text-on-primary">add</span>
+</div>
+<span class="material-symbols-outlined text-outline">library_books</span>
+<span class="material-symbols-outlined text-outline">settings</span>
+</div>
+</body></html>

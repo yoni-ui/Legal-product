@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "slug": "mutual-nda-free",
+      "title": "Mutual NDA (starter)",
+      "category": "NDA",
+      "is_free": true
+    },
+    {
+      "slug": "services-agreement-pro",
+      "title": "Professional services agreement",
+      "category": "Services",
+      "is_free": false
+    }
+  ]
+}

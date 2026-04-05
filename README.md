@@ -18,7 +18,7 @@ psql "postgresql://tebekaye:tebekaye_dev@localhost:5432/tebekaye" -f supabase/mi
 
 Or use any Postgres client with the same files.
 
-3. **Optional — default local user** (skip signup): from `apps/api` after `pip install -e ".[dev]"`, run `python scripts/seed_local_dev.py`. Sign in at `/login` with **dev@local.tebekaye** / **devlocal123**.
+3. **Optional — premade test users** (remove before production): from `apps/api` after `pip install -e ".[dev]"`, run `python scripts/seed_local_dev.py`. Sign in at `/login` with **dev@local.tebekaye** / **devlocal123** or **test@tebekaye.local** / **TestAccount123!**.
 
 ## Quick start
 

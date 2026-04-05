@@ -1,13 +1,16 @@
 """
-Create a default local user + workspace (idempotent).
+Create premade local/test users + workspaces (idempotent).
 
-Run from repo root after migrations:
+Run after migrations:
   cd apps/api
   python scripts/seed_local_dev.py
 
-Default login (local only):
-  Email:    dev@local.tebekaye
-  Password: devlocal123
+REMOVE OR DISABLE THESE ACCOUNTS BEFORE PRODUCTION / PUBLIC DEMO.
+They are for local QA and CI-style manual testing only.
+
+Default logins (see also apps/web/src/lib/local-dev-credentials.ts):
+  - dev@local.tebekaye / devlocal123
+  - test@tebekaye.local / TestAccount123!
 """
 from __future__ import annotations
 
@@ -37,33 +40,54 @@ from app.core.security import hash_password
 from app.db.session import SessionLocal
 from app.models import User, Workspace, WorkspaceMember
 
-DEV_EMAIL = "dev@local.tebekaye"
-DEV_PASSWORD = "devlocal123"
-DEV_NAME = "Local Dev"
+# --- Premade test accounts (DELETE THIS BLOCK / stop running seed before prod) ---
+PREMADE_TEST_USERS: tuple[tuple[str, str, str, str], ...] = (
+    # (email, password, display_name, workspace_name)
+    ("dev@local.tebekaye", "devlocal123", "Local Dev", "Local workspace"),
+    ("test@tebekaye.local", "TestAccount123!", "QA Test User", "Test workspace"),
+)
+
+
+def ensure_user_workspace(
+    db,
+    email: str,
+    password: str,
+    display_name: str,
+    workspace_name: str,
+) -> str:
+    existing = db.query(User).filter(User.email == email).first()
+    if existing:
+        return f"skip: {email} (already exists, password not reset)"
+    user = User(
+        email=email,
+        password_hash=hash_password(password),
+        name=display_name,
+    )
+    db.add(user)
+    db.flush()
+    ws = Workspace(name=workspace_name, plan_tier="starter")
+    db.add(ws)
+    db.flush()
+    db.add(WorkspaceMember(workspace_id=ws.id, user_id=user.id, role="owner"))
+    return f"created: {email}"
 
 
 def main() -> None:
     db = SessionLocal()
     try:
-        existing = db.query(User).filter(User.email == DEV_EMAIL).first()
-        if existing:
-            print(f"Already exists: {DEV_EMAIL} (password unchanged)")
-            return
-        user = User(
-            email=DEV_EMAIL,
-            password_hash=hash_password(DEV_PASSWORD),
-            name=DEV_NAME,
-        )
-        db.add(user)
-        db.flush()
-        ws = Workspace(name="Local workspace", plan_tier="starter")
-        db.add(ws)
-        db.flush()
-        db.add(WorkspaceMember(workspace_id=ws.id, user_id=user.id, role="owner"))
+        lines: list[str] = []
+        for email, password, name, ws_name in PREMADE_TEST_USERS:
+            lines.append(ensure_user_workspace(db, email, password, name, ws_name))
         db.commit()
-        print("Seeded local dev user:")
-        print(f"  Email:    {DEV_EMAIL}")
-        print(f"  Password: {DEV_PASSWORD}")
+        print("Premade test users (remove before production):")
+        for email, password, _, _ in PREMADE_TEST_USERS:
+            print(f"  {email}  /  {password}")
+        print("—")
+        for line in lines:
+            print(line)
+    except Exception:
+        db.rollback()
+        raise
     finally:
         db.close()
 
